@@ -4,23 +4,27 @@ import Square from "./components/Square";
 import { useState } from "react";
 
 const GameBoard = () => {
-  const [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
+  const [board, setBoard] = useState(Array(9).fill(""));
   const [player, setPlayer] = useState("X");
 
-  const onClick = (square) => {
-    setBoard(
-      board.map((value, id) => {
-        if (id === square && value === "") {
-          return player;
-        }
-        return value;
-      })
-    );
+  const onClick = (number) => {
+    if (board[number] !== "") {
+      alert("Already clicked!");
+      return;
+    }
     if (player === "X") {
+      board[number] = "X";
       setPlayer("O");
     } else {
+      board[number] = "O";
       setPlayer("X");
     }
+    setBoard(board);
+  };
+
+  const gameRestart = () => {
+    setPlayer("X");
+    setBoard(Array(9).fill(""));
   };
 
   return (
@@ -89,6 +93,9 @@ const GameBoard = () => {
           />
         </div>
       </div>
+      <button className="restart" onClick={gameRestart}>
+        Restart Game
+      </button>
       <nav>
         <Link to="/scoreoard">To Scoreboard</Link>
       </nav>
