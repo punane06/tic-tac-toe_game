@@ -1,11 +1,9 @@
 import "../App.scss";
 
-const Square = ({ value }) => {
+const Square = ({ value, onClick }) => {
+  const style = value ? `square ${value}` : "square";
   return (
-    <div
-      className="square"
-      // onClick={pickSquare}
-    >
+    <div className={style} onClick={onClick}>
       <div>{value}</div>
     </div>
   );

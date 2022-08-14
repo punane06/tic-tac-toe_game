@@ -8,13 +8,23 @@
   background-color: rgba(225, 225, 225, 0.3);
   width: 150px;
   height: 150px;
-  color: red;
   font-size: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 3px;
   border-radius: 10px;
+}
+.square:active {
+  opacity: 0.7;
+}
+
+.x {
+  color: rgb(218, 39, 39);
+}
+
+.o {
+  color: rgb(137, 161, 226);
 }
 
 .game-board-container {
