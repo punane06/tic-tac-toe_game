@@ -2,12 +2,18 @@ import "./App.scss";
 import { Link } from "react-router-dom";
 import Square from "./components/Square";
 import { useState } from "react";
+import { calculateWinner } from "./helper";
 
 const GameBoard = () => {
   const [board, setBoard] = useState(Array(9).fill(""));
   const [player, setPlayer] = useState("X");
+  const winner = calculateWinner(board);
 
   const onClick = (number) => {
+    if (winner) {
+      alert(`Game is ower, ${winner} winn this game`);
+      return;
+    }
     if (board[number] !== "") {
       alert("Already clicked!");
       return;
@@ -20,6 +26,7 @@ const GameBoard = () => {
       setPlayer("X");
     }
     setBoard(board);
+    console.log(board);
   };
 
   const gameRestart = () => {
@@ -93,6 +100,7 @@ const GameBoard = () => {
           />
         </div>
       </div>
+      {winner && <div>The winner is {winner}</div>}
       <button className="restart" onClick={gameRestart}>
         Restart Game
       </button>
