@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Scoreboard = () => {
   return (
-    <div className="Gscoreboardame">
+    <div className="scoreboard">
       Game Scoreboard
       <nav>
         <Link to="/gameboard">To game</Link>

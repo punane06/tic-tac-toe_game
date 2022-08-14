@@ -1,9 +1,12 @@
-import "./App.scss";
+import "../App.scss";
 
-const Square = () => {
+const Square = ({ value }) => {
   return (
-    <div className="square">
-      <div>square</div>
+    <div
+      className="square"
+      // onClick={pickSquare}
+    >
+      <div>{value}</div>
     </div>
   );
 };

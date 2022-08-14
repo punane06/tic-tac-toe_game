@@ -4,6 +4,7 @@ import Game from "./Game";
 import GameBoard from "./GameBoard";
 import Scoreboard from "./Scoreboard";
 import NotFound from "./NotFound";
+import Square from "./components/Square";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/" element={<Game />} />
         <Route path="/gameboard" element={<GameBoard />} />
         <Route path="/scoreoard" element={<Scoreboard />} />
+        <Route path="/square" element={<Square />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
