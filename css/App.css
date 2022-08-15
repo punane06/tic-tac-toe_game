@@ -5,6 +5,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 26px;
+}
+
+.game {
+  padding: 20px;
+}
+.game h1 {
+  margin-bottom: 30px;
+}
+.game h1 span {
+  display: block;
 }
 
 .square {
@@ -46,6 +57,12 @@
   justify-content: center;
   align-items: center;
 }
+.game-board-container .next {
+  margin-bottom: 20px;
+}
+.game-board-container .winner {
+  margin-top: 20px;
+}
 
 .game-row {
   display: flex;
@@ -63,7 +80,29 @@ button {
   font-size: 20px;
   border-radius: 10px;
   cursor: pointer;
+  margin: 20px;
 }
 button:hover {
   opacity: 0.5;
+}
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+.results {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.x-results {
+  color: rgb(218, 39, 39);
+}
+
+.o-results {
+  color: rgb(137, 161, 226);
+}
+
+.results {
+  display: flex;
 }/*# sourceMappingURL=App.css.map */

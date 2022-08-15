@@ -1,3 +1,5 @@
+import { createContext } from "react";
+
 export const calculateWinner = (board) => {
   const lines = [
     [0, 1, 2],
@@ -17,3 +19,5 @@ export const calculateWinner = (board) => {
   }
   return null;
 };
+
+export const GameContext = createContext(null);
