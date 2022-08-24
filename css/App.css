@@ -57,11 +57,9 @@
   justify-content: center;
   align-items: center;
 }
-.game-board-container .next {
-  margin-bottom: 20px;
-}
+.game-board-container .next,
 .game-board-container .winner {
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .game-row {

@@ -1,23 +1,38 @@
 import "./App.scss";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Game = () => {
+  const [playersNames, setPlayersNames] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [secondName, setSecondName] = useState("");
-  // const [playersNames, setPlayersNames] = useState([]);
 
-  const handle = (e) => {
-    let firstName = "";
-    window.localStorage.setItem("firstName", JSON.stringify(firstName));
+  const handlePlayersSubmit = (e) => {
+    e.preventDefault();
+    let playerName = {
+      firstName,
+      secondName,
+    };
+    setPlayersNames([...playersNames, playerName]);
+    setFirstName(firstName);
+    setSecondName(secondName);
   };
+
+  useEffect(() => {
+    window.localStorage.setItem("playersNames", JSON.stringify(playersNames));
+  }, [playersNames]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("firstName", JSON.stringify(firstName));
+  //   localStorage.setItem("secondName", JSON.stringify(secondName));
+  // });
 
   return (
     <div className="game">
       <h1>
         Welcome to <span>Tic-Tac-Toe</span> game
       </h1>
-      <form>
+      <form onSubmit={handlePlayersSubmit}>
         <label name="first-name">
           First player name:
           <br />
@@ -43,11 +58,13 @@ const Game = () => {
         </label>
         <br />
       </form>
+      <div>{firstName}</div>
+      <div>{secondName}</div>
       {/* <button onClick={() => setPlayersNames()}>Submitt names</button> */}
-      <button onClick={() => handle}>
+      <button type="submit" onClick={handlePlayersSubmit}>
         <Link to="/gameboard">Start the game</Link>
       </button>
-      {/* <div>{playersNames}</div> */}
+      <div>{playersNames.firstName}</div>
     </div>
   );
 };

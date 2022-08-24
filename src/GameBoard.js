@@ -51,7 +51,12 @@ const GameBoard = () => {
     <div className="game-board-container">
       <GameContext.Provider value={{ gameData, setGameData }}>
         <PlayersResults results={results} player={player} />
-        <div className="next">Next turn: {player}</div>
+        {winner && (
+          <div className={`winner ${winner === "X" ? "X" : "O"}`}>
+            The winner is {winner}!
+          </div>
+        )}
+        {!winner && <div className="next">Next turn: {player}</div>}
         <div className="game-board">
           <div className="game-row">
             <Square
@@ -114,7 +119,6 @@ const GameBoard = () => {
             />
           </div>
         </div>
-        {winner && <div className="winner">The winner is {winner}</div>}
         <button className="restart" onClick={gameRestart}>
           New Game
         </button>
