@@ -2,27 +2,34 @@ import "./App.scss";
 import { Link } from "react-router-dom";
 import Square from "./components/Square";
 import PlayersResults from "./components/PlayersResults";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { calculateWinner, GameContext } from "./helper";
+import ScoreContext from "./components/ScoreContext";
 
 const GameBoard = () => {
   const [board, setBoard] = useState(Array(9).fill(""));
   const [player, setPlayer] = useState("X");
   const winner = calculateWinner(board);
   const [gameData, setGameData] = useState("Hello World!");
-  const [results, setResults] = useState({ xResults: 0, oResults: 0 });
+  const [oResults, setOResults] = useState(0);
+  const [xResults, setXResults] = useState(0);
+
+  const scoreContext = useContext(ScoreContext);
+
+  useEffect(() => {
+    if (winner === "O") {
+      setOResults((o) => o + 1);
+      scoreContext.addBoard(board);
+    } else if (winner === "X") {
+      setXResults((x) => x + 1);
+      scoreContext.addBoard(board);
+    }
+  }, [winner]);
+
+  console.log(scoreContext.boards);
 
   const onClick = (id) => {
     if (winner) {
-      if (winner === "X") {
-        let { oResults } = results;
-        oResults += 1;
-        setResults({ ...results, oResults });
-      } else {
-        let { xResults } = results;
-        xResults += 1;
-        setResults({ ...results, xResults });
-      }
       alert(`Game is ower, ${winner} winn this game.`);
       return;
     }
@@ -50,7 +57,7 @@ const GameBoard = () => {
   return (
     <div className="game-board-container">
       <GameContext.Provider value={{ gameData, setGameData }}>
-        <PlayersResults results={results} player={player} />
+        <PlayersResults results={{ oResults, xResults }} player={player} />
         {winner && (
           <div className={`winner ${winner === "X" ? "X" : "O"}`}>
             The winner is {winner}!
