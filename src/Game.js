@@ -3,29 +3,19 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Game = () => {
-  const [playersNames, setPlayersNames] = useState([]);
-  const [firstName, setFirstName] = useState("");
-  const [secondName, setSecondName] = useState("");
+  const [firstName, setFirstName] = useState("X");
+  const [secondName, setSecondName] = useState("O");
 
   const handlePlayersSubmit = (e) => {
     e.preventDefault();
-    let playerName = {
-      firstName,
-      secondName,
-    };
-    setPlayersNames([...playersNames, playerName]);
     setFirstName(firstName);
     setSecondName(secondName);
   };
 
   useEffect(() => {
-    window.localStorage.setItem("playersNames", JSON.stringify(playersNames));
-  }, [playersNames]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("firstName", JSON.stringify(firstName));
-  //   localStorage.setItem("secondName", JSON.stringify(secondName));
-  // });
+    localStorage.setItem("firstName", firstName);
+    localStorage.setItem("secondName", secondName);
+  });
 
   return (
     <div className="game">
@@ -58,13 +48,9 @@ const Game = () => {
         </label>
         <br />
       </form>
-      <div>{firstName}</div>
-      <div>{secondName}</div>
-      {/* <button onClick={() => setPlayersNames()}>Submitt names</button> */}
       <button type="submit" onClick={handlePlayersSubmit}>
         <Link to="/gameboard">Start the game</Link>
       </button>
-      <div>{playersNames.firstName}</div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -17,6 +17,11 @@
   }
 }
 
+.scoreboard {
+  background: #0d1225;
+  color: white;
+  height: 100%;
+}
 .square {
   background-color: rgba(225, 225, 225, 0.3);
   width: 150px;
@@ -97,4 +102,34 @@ button {
 }
 .results {
   display: flex;
+}
+.scoreboard-board {
+  width: auto;
+  margin: auto;
+  // width: 100%;
+  // justify-content: center;
+  // display: flex;
+  .game-board {
+    margin: 16px;
+  }
+  .square {
+    width: 100px;
+    height: 100px;
+  }
+}
+.scoreboard-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  nav {
+    margin-left: 20px;
+  }
+}
+.scoreboard-winner {
+  margin-right: 50px;
+}
+.scoreboard-board-container {
+  background: #0d1225;
+  display: flex;
+  flex-flow: row wrap;
 }

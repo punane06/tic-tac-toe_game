@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -16,6 +16,12 @@
 }
 .game h1 span {
   display: block;
+}
+
+.scoreboard {
+  background: #0d1225;
+  color: white;
+  height: 100%;
 }
 
 .square {
@@ -103,4 +109,35 @@ button a {
 
 .results {
   display: flex;
+}
+
+.scoreboard-board {
+  width: auto;
+  margin: auto;
+}
+.scoreboard-board .game-board {
+  margin: 16px;
+}
+.scoreboard-board .square {
+  width: 100px;
+  height: 100px;
+}
+
+.scoreboard-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scoreboard-title nav {
+  margin-left: 20px;
+}
+
+.scoreboard-winner {
+  margin-right: 50px;
+}
+
+.scoreboard-board-container {
+  background: #0d1225;
+  display: flex;
+  flex-flow: row wrap;
 }/*# sourceMappingURL=App.css.map */
